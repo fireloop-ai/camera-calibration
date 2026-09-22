@@ -6,6 +6,11 @@ Real-to-sim camera calibration for an SO-101 arm: calibrates side-view and wrist
 **Sim:** Isaac Sim 5.x | **Robot:** SO-101 (lerobot USD) | **Cameras:** Side-view (Android IP) + Wrist (USB)
 **OpenCV:** `opencv-contrib-python >= 4.13` | **Python:** `>= 3.12`
 
+**Related blog posts:**
+- [ChArUco Camera Calibration — the calibration step that makes or breaks your sim-to-real pipeline](https://www.blog.fireloop.ai/the-calibration-step-that-makes-or-breaks-your-sim-to-real-pipeline/)
+- [Hand-Eye Calibration — connecting robot vision to robot motion](https://www.blog.fireloop.ai/hand-eye-calibration-connecting-robot-vision-to-robot-motion/)
+- Extrinsic Parameters — coming soon
+
 ---
 
 ## Overview
@@ -256,6 +261,8 @@ All scripts are written for **OpenCV 4.6+ new API**. Several breaking changes fr
 
 ### Calib 1 — Side-View Intrinsics
 
+> Background: [ChArUco Camera Calibration](https://www.blog.fireloop.ai/the-calibration-step-that-makes-or-breaks-your-sim-to-real-pipeline/)
+
 - Camera: Android phone IP stream
 - Move the **calibration board** (separate print) to varied angles, distances, positions
 - Robot arm can be in any position — irrelevant for this step
@@ -277,6 +284,8 @@ All scripts are written for **OpenCV 4.6+ new API**. Several breaking changes fr
 - Output: `calibration_files/wrist/camera_matrix.npy`, `dist_coeffs.npy`
 
 ### Calib 3 — Wrist Hand-Eye Calibration
+
+> Background: [Hand-Eye Calibration](https://www.blog.fireloop.ai/hand-eye-calibration-connecting-robot-vision-to-robot-motion/)
 
 Solves AX = XB → finds fixed transform `T_cam2gripper` (camera relative to gripper tool frame).
 
